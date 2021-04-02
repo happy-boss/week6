@@ -67,8 +67,10 @@ def member():
     #是從session中的資料取得再來用資料庫寫入難算取得
     #但應出來是有逗號 要用陣列的觀念去想
     #第一次多此一舉再創一個陣列去執行 後面發現這根本就是一個陣列 直接name[0]就可以
-    print(name)
-    return render_template("member.html",name=name)
+    if username in session:
+        return render_template("member.html",name=name)
+    else:
+        return redirect("/")
 
 @app.route("/error")
 def error():
