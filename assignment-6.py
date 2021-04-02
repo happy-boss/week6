@@ -60,14 +60,15 @@ def signout():
 
 @app.route("/member")
 def member():
-    mycursor.execute("SELECT name FROM user where username='%s'"%(session['username']))
-    name = mycursor.fetchone()
-    name=name[0]
+    if username in session:
+        mycursor.execute("SELECT name FROM user where username='%s'"%(session['username']))
+        name = mycursor.fetchone()
+        name=name[0]
     #我在登入頁面時，第一次想錯，根本沒有從前端取得資料
     #是從session中的資料取得再來用資料庫寫入難算取得
     #但應出來是有逗號 要用陣列的觀念去想
     #第一次多此一舉再創一個陣列去執行 後面發現這根本就是一個陣列 直接name[0]就可以
-    if username in session:
+   
         return render_template("member.html",name=name)
     else:
         return redirect("/")
