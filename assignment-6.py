@@ -29,8 +29,7 @@ def signup():
     username=request.form['username']
     mycursor.execute("SELECT  username FROM user where username='%s'"% (username))
     user=mycursor.fetchone()
-    #這裡做了嘗試，原本寫user!=0代表它帳號重複
-    #後面試試user==username可不可以，發現問題點在於資料型態根本不同
+    #試試user==username可不可以，發現問題點在於資料型態根本不同
     #印出"test"跟test要再去處理東西才是正確的
     if user!=None:
         return redirect("/error?message=帳號重複註冊")
