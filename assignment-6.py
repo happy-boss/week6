@@ -9,7 +9,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 mydb=mysql.connector.connect(
     host="localhost",
     user="root",
-    password="2021",
+    password="",
     database="mydatabase",
     buffered = True
     #Buffered游标适用于多个小结果集的查询,且多个结果集之间的数据需要一起使用。
